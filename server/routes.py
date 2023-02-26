@@ -34,3 +34,8 @@ def add_review():
 @app.route('/get_reviews', methods=['GET'])
 def get_reviews():
     return User().get_reviews()
+
+
+@app.route("/user/get_info", methods=['GET'])
+def get_user_info():
+    return User().get_user_info()

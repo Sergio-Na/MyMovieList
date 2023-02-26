@@ -64,3 +64,12 @@ class User:
             token, app.config["JWT_SECRET_KEY"], algorithms=['HS256'])['sub']
         reviews = db.users.find_one({"email": email})['reviews']
         return jsonify(reviews), 200
+
+    def get_user_info(self):
+        token = request.get_json()['token']
+        email = jwt.decode(
+            token, app.config["JWT_SECRET_KEY"], algorithms=['HS256'])['sub']
+        print(email)
+        user = db.users.find_one({"email": email})
+        print(user)
+        return jsonify(user), 200
